@@ -76,3 +76,13 @@ is a hard constraint — any addition needs a corresponding cut.
 
 `.mcp.json` configures `chrome-devtools` (stdio, npx) and `atlassian` (HTTP, internal Pulsar build
 host). Both are inherited environment tooling, unrelated to the CV content.
+
+## Version control
+
+Tracked in git since August 2026; remote `origin` is `github.com/SirMosquito/curriculum`
+(the user's personal GitHub account, not the work one). The local `user.email` is deliberately set
+to the personal address `andbernardo@outlook.com` so work email does not end up in a public history.
+
+`.mcp.json` is **gitignored on purpose** — it points at the internal host
+`pulsar-build.critical.pt:9000`. Do not commit it, and do not quote internal hostnames in tracked
+files.
