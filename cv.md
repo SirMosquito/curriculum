@@ -14,19 +14,25 @@ improving product quality and performance.
 
 ## Work Experience
 
-### Software Engineer — Critical Software
+### Critical Software
 
+Graduate Engineer → Junior Engineer → Professional Engineer → Senior Engineer
 September 2020 – Present
 
-- Designed and maintained a multi-container ERP-style platform supporting core company operations.
-- Built and evolved backend services handling business logic, database access, and Kafka-based
-  integrations with Jira, CRM, and Business Central.
-- Delivered features across HR, project management, expenses, vacation workflows, and procurement.
-- Improved reliability and performance through architecture contributions, documentation, and
-  continuous improvement initiatives.
+- Delivered features across HR, project management, expenses, vacation, and procurement workflows
+  on a multi-tenant ERP platform — 4 tenants, ~5,000 users, 680+ tables.
+- Built and evolved backend services and Kafka-based integrations with Jira, CRM, and Business
+  Central, improving reliability and performance through architecture contributions.
 - Mentored junior developers through code reviews, onboarding support, and best-practice guidance.
-- Since 2026, leading LLM-powered automation flows to accelerate development workflows using
-  GitHub Copilot and Claude Code.
+- Promoted to Senior Engineer in January 2026; now leading LLM-powered automation flows (GitHub
+  Copilot, Claude Code) to accelerate development workflows.
+
+### Prado - Cartolinas da Lousã — Internship
+
+September 2018 – June 2019
+
+- Built an internal task-management webapp (PHP, MySQL, JavaScript) — first hands-on software
+  project, ahead of formal training.
 
 ## Relevant Skills
 
@@ -53,9 +59,8 @@ September 2020 – Present
 
 ### Lousã Volley Clube — Non-profit
 
-Support in the organisation of an annual volleyball tournament, called Summer Cup, with around
-200 teams and over 3,000 participants, contributing to logistics, coordination, and operational
-support.
+Supported the organisation of an annual volleyball tournament, Summer Cup — 200 teams,
+3,000+ participants.
 
 ### Engineering Ingenuity Award 2025 — Critical Software
 

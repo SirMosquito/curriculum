@@ -10,7 +10,7 @@ preenchida, dá para reescrever o `cv.md` inteiro de uma vez.
 
 ## Prioridade alta
 
-### [ ] 1. Meter números na parte profissional
+### [x] 1. Meter números na parte profissional (parcial — escala feita, falta impacto medido)
 
 Seis anos descritos com "designed and maintained", "built and evolved", "improved reliability and
 performance" — nada disto é falsificável, logo nada disto convence.
@@ -26,7 +26,7 @@ Dois ou três números concretos valem mais que os seis bullets actuais. Candida
 - alguma melhoria de performance medida (tempo de resposta, tempo de build, throughput)
 - quantas pessoas mentorei
 
-### [ ] 2. Resolver a contradição sobre a senioridade
+### [x] 2. Resolver a contradição sobre a senioridade
 
 O cabeçalho diz "Senior Software Engineer", o Summary diz "Senior Software Engineer at Critical
 Software" — e a Work Experience diz "Software Engineer". Quem lê com atenção nota, e lê como
@@ -39,7 +39,7 @@ Dois caminhos:
 - **Não houve promoção formal** → o cabeçalho pode continuar a ser o cargo-alvo, mas o Summary tem
   de deixar de o afirmar como facto presente.
 
-### [ ] 3. Dar trajectória aos seis anos
+### [x] 3. Dar trajectória aos seis anos
 
 Um cargo, uma lista plana de bullets, sem eixo temporal. O meu 2021 e o meu 2026 parecem a mesma
 pessoa.
@@ -47,7 +47,7 @@ pessoa.
 Mesmo sem promoção dá para estruturar por evolução: primeiro entregar features → depois arquitectura
 e integrações → agora liderar automação. Mesma informação, mas passa a contar uma subida.
 
-### [ ] 4. Promover e concretizar o bullet dos LLMs
+### [x] 4. Promover e concretizar o bullet dos LLMs (parcial — subiu e ligou-se à promoção; falta ganho/nº devs)
 
 `Since 2026, leading LLM-powered automation flows to accelerate development workflows` é o que me
 distingue de todos os outros backend engineers com Java e Kafka — e está em **último** lugar, vago.
@@ -65,7 +65,7 @@ ocupa quatro linhas do espaço mais valioso da página.
 
 Um Summary útil dá: anos + domínio + diferenciador (a automação com LLMs) + alvo.
 
-### [ ] 6. Explicar o período 2017–2020
+### [x] 6. Explicar o período 2017–2020
 
 Mestrado acaba em 2017, Critical Software começa em Setembro de 2020. O curso de Java (2019–2020)
 cobre parte, mas sobra tempo. A transição Engenharia Mecânica → Software também não é abordada em
@@ -101,10 +101,10 @@ ninguém de fora reconhece. Uma oração a dizer *pelo quê* transforma-o de dec
 
 Está em Educational History e em Awards, e tem o mesmo peso visual que um mestrado de cinco anos.
 
-### [ ] Comprimir o parágrafo do Lousã Volley Clube
+### [x] Comprimir o parágrafo do Lousã Volley Clube
 
-Três linhas — o texto corrido mais longo do CV — para uma actividade extra-profissional. Comprimir
-para uma linha liberta espaço para os números do ponto 1.
+Três linhas — o texto corrido mais longo do CV — para uma actividade extra-profissional. Comprimido
+para uma linha; o espaço libertado pagou a nova mini-entrada da Prado (ver item 6).
 
 ### [ ] Cortar ou reescrever o bullet dos módulos
 
@@ -118,19 +118,40 @@ descreve o produto, não o meu contributo. Que o ERP tem módulo de férias não
 Preencher ao longo do tempo. É isto que desbloqueia a reescrita.
 
 **Escala do Pulsar**
-- utilizadores:
+- utilizadores: ~5.000, no total, distribuídos pelos 4 tenants
+- tenants: 4 instalações independentes (mesma plataforma, deployments separados)
 - serviços / containers:
 - volume Kafka:
-- outra métrica de escala:
+- outra métrica de escala: 680+ tabelas no modelo relacional
 
 **Impacto medido** (qualquer melhoria com antes/depois)
 -
 
-**Progressão de carreira**
-- houve promoção? quando? para que título?
+**Progressão de carreira** (fonte: LinkedIn)
+- Graduate Engineer — Sep 2020 – Sep 2021
+- Junior Engineer — Sep 2021 – Jul 2023
+- Professional Engineer — Jul 2023 – Jan 2026
+- Senior Engineer — Jan 2026 – presente
+- título interno é "Senior Engineer" (sem "Software"); manter "Senior Software Engineer" no CV é uma
+  liberdade de fraseio aceitável para leitores externos, não uma inflação — o cabeçalho passa a ser
+  facto, não alvo.
 
 **2017–2020**
-- o que aconteceu:
+- Nov 2017 – Aug 2018: estágio na EDP (Sines) — rede de aspersores para atenuar fuga de cinzas de
+  um silo de cinzas (projecto 100% de engenharia mecânica/ambiental: caderno de encargos, gestão de
+  obra, plano de manutenção preventiva). Sem relação com software.
+- Sep 2018 – Jun 2019: estágio na Prado - Cartolinas da Lousã, S.A. (Lousã) — apoio ao departamento
+  de Manutenção **e** criação de uma webapp de gestão integrada de trabalhos/tarefas da empresa
+  (PHP, MySQL, JavaScript). **Este é o verdadeiro ponto de viragem**: primeiro projecto de software
+  a sério, antes até do curso de Java.
+- 2019 – 2020: Curso de Programação Java, Universidade de Coimbra, 19/20 (já no `cv.md`)
+- narrativa completa: engenharia mecânica → estágio 100% mecânico (EDP) → estágio onde constrói uma
+  webapp por conta própria (Prado) → formaliza com curso de Java, top da turma → Critical Software.
+  É uma história de pivot genuína e demonstrável, não um buraco no CV.
+- [x] decidido: entrou no `cv.md` como mini-entrada em Work Experience, depois da Critical Software
+  ("Prado - Cartolinas da Lousã — Internship", Sep 2018 – Jun 2019, bullet sobre a webapp em
+  PHP/MySQL/JS). Custo compensado comprimindo o parágrafo do voleibol para uma linha (ver item
+  abaixo).
 
 **Automação com LLMs**
 - que fluxos:
