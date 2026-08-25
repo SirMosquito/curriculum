@@ -9,11 +9,20 @@ no dependencies — the only artefacts are the CV document itself and `.mcp.json
 
 Contents:
 
-- `cv.md` — the working source of the CV content. Edit wording here first.
+- `cv-completo.md` — the **master CV**: long-form, English (GB), the full record. Facts land here
+  first.
+- `cv.md` — the one-page version, cut from the master to fit the Canva layout.
 - `CV André 2026.pdf` — the current published CV, a single-page Canva export.
 - `cv-improvements.md` — running checklist of CV weaknesses to fix, with a fill-in section for
-  facts only the user can supply (scale metrics, promotion history, the 2017–2020 gap). Written in
-  Portuguese: it is a working note, not a CV artefact, so the English (GB) rule does not apply.
+  facts only the user can supply. Written in Portuguese: it is a working note, not a CV artefact,
+  so the English (GB) rule does not apply.
+- `historico/` — the personal archive the CV is cut from: career timeline, the six years at Critical
+  Software reconstructed year by year, and the quantitative record from Jira. Portuguese working
+  notes, except `historico/factos-para-cv.md`, which is English because it is text destined for the
+  CV. See `historico/README.md`.
+
+The flow for content is: `historico/` (evidence) → `cv-completo.md` (master) → `cv.md` (one page) →
+Canva → PDF.
 
 ## Language rule
 
@@ -86,3 +95,8 @@ to the personal address `andbernardo@outlook.com` so work email does not end up 
 `.mcp.json` is **gitignored on purpose** — it points at the internal host
 `pulsar-build.critical.pt:9000`. Do not commit it, and do not quote internal hostnames in tracked
 files.
+
+`historico/raw/` is **gitignored on purpose** too. It holds the raw Jira extraction, and internal
+issue titles carry client names, project codes and internal addresses. The same rule applies to
+anything else sourced from internal systems: aggregate and sanitise before it enters a tracked file
+— product and technology level only, never client names or project codes.

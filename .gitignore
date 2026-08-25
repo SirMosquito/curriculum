@@ -1,2 +1,6 @@
 # Internal MCP config — contains an internal host, keep it out of the repo
 .mcp.json
+
+# Raw Jira extraction — internal issue titles carry client names and project codes.
+# Stays on the machine; the curated files in historico/ are the publishable version.
+historico/raw/
