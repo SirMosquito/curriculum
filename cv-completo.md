@@ -6,9 +6,9 @@ Senior Software Engineer · Coimbra, Portugal
 
 Portuguese (native) · English (fluent)
 
-> **This is the master CV — the long-form record.** `cv.md` is the one-page version cut from it for
-> the Canva layout. Edit facts here first, then decide what survives the cut. See `historico/` for
-> the underlying evidence.
+> **This is the master CV — the long-form record.** `cv.md` is the version cut from it for the Canva
+> layout. Edit facts here first, then decide what survives the cut. See `historico/` for the
+> underlying evidence.
 
 ## Summary
 
@@ -20,71 +20,131 @@ asynchronous integrations survive production.
 
 ## Work Experience
 
-### Critical Software — Coimbra, Portugal
-
-**Senior Engineer** · January 2026 – present
-**Professional Engineer** · July 2023 – January 2026
-**Junior Engineer** · September 2021 – July 2023
-**Graduate Engineer** · September 2020 – September 2021
+### Critical Software — Coimbra, Portugal · September 2020 – present
 
 Six years on Pulsar, an ERP-style web platform running the company's own operations — projects,
 planning, resourcing, HR, expenses, travel, procurement, invoicing and financial reporting.
-Four tenants, ~5,000 users, 680+ tables.
+Four tenants, ~5,000 users, 680+ tables. Java services with a dedicated datasource per external
+system, connected over Kafka.
 
-**Scale of contribution**
+918 issues assigned and 847 resolved across the six years — roughly 150 per year, sustained. Of
+those, 372 backend sub-tasks (the service layer, data model and integrations of a whole feature)
+plus 181 stories and tasks owned end to end: **500+ features shipped**.
 
-- 918 issues assigned and 847 resolved over six years — roughly 150 delivered per year, sustained.
-- Backend, data model and integrations for 372 features delivered as part of larger work, plus 181
-  stories and tasks owned end to end: **500+ features shipped**.
+---
 
-**Integrations — the through-line of the six years**
+#### Senior Engineer · January 2026 – present
 
-- Owned the integration layer connecting the platform to Jira (Server and Cloud), OpsGenie, ITSM,
-  SAP Concur, Dynamics NAV, Business Central, Dynamics CRM, Power BI and MS Project.
+Three changes in the nature of the work, not only in its volume: technical design became a
+responsibility of its own, the profile went full-stack, and LLM tooling entered the product.
+
+- Own the technical design of features, not only their implementation — technical plan, Java backend
+  and Angular frontend end to end.
+- Introduced spec-driven development with LLM tooling to the product, building the team's spec kit.
+- Built contract and PO consumption tracking across projects from the data model up — five parts,
+  from the information itself through consumption, editing and detail, comments, and the link to
+  credit notes.
+- Extended Suppliers Contracts with key-field columns and a renewal decision flow with
+  notifications; added vendor and G/L account fields, intercompany invoicing restrictions and field
+  limits to Order Requests and Purchases; added cancellation and approval/validation actions with
+  permissions to Travels.
+- Built the ITSM synchronisation for prevention schedules, with error handling and project mapping,
+  and the pull API for OpsGenie.
+- Optimised the project plan write endpoint further and consolidated queries across the module.
+- Mentor junior developers through code review, onboarding support and best-practice guidance.
+
+#### Professional Engineer · July 2023 – January 2026
+
+Two and a half years across three distinct phases: a platform year, a year of large migrations, and
+a year of new integrations and performance work.
+
+**Integrations and migrations**
+
 - Led the Jira Server → Cloud migration: impact assessment followed by a four-part rebuild that
-  abstracted the HTTP layer and introduced parallel processing flows for both platforms.
-- Migrated the finance integration from Dynamics NAV to Business Central — moved to OData services
-  and replaced NTLM with OAuth authentication.
+  abstracted the HTTP layer and introduced parallel processing flows for both platforms, then
+  removed the legacy options.
+- Migrated the finance integration from Dynamics NAV to Business Central — moved to OData services,
+  replaced NTLM with OAuth authentication, remodelled the employee fields and synchronised cost
+  centres.
 - Built the SAP Concur travel integration from scratch: the datasource itself, then full user, task
-  and approver synchronisation, including backup approvers and role correction.
-- Built the OpsGenie and ITSM integrations that pull on-call schedules into project operations,
-  with error handling and project mapping.
+  and approver synchronisation, including backup approvers, role correction and inactive users.
+- Replaced the default MS Project import/export behaviour with a purpose-built MPP/XML engine
+  handling actuals, rates, company calendars, future resource absences, baselines, and compression
+  of imported files.
 
 **Reliability of asynchronous processing**
 
-- Hardened Kafka-based synchronisation under production load: semaphores against concurrent
-  processing of the same message, automatic retry after sync failures, gzip message compression,
-  webhook authentication, and incremental full-sync reading only changed issues.
-- Built system health checks that detect stalled queues and accumulating unprocessed entities
-  before users notice, and extended them across event types.
-- Diagnosed and fixed production deadlocks in baseline and event-log tables, and rewrote the
-  message-processing pipeline of the Jira datasource.
+- Hardened Jira synchronisation under production load: gzip message compression, webhook encryption
+  and authentication, paginated requests, message-size reduction, a full sync reading only changed
+  issues, and a shorter sync interval.
+- Extended system health checks to more event types and built a service that detects entities
+  accumulating unprocessed, before users notice.
+- Diagnosed and fixed production deadlocks in the baseline and event-log tables, and revised the
+  underlying views.
 
-**Performance and platform**
+**Performance, platform and technical debt**
 
 - Optimised the project plan read and write endpoints — the hottest path in the product — alongside
-  portfolio listings and operations scheduling.
+  portfolio listings and the operations schedule.
 - Ran runtime and dependency upgrades across the platform: Java 21, Wildfly 32, Quarkus and Kafka,
   including remediation of known vulnerabilities in the datasource services.
-- Created the service Docker image and integrated it into the CI pipeline.
-- Built the asynchronous file and Excel download service used platform-wide, and user-level
-  advanced filter presets rolled out to every module.
+- Built the asynchronous file and Excel download service — four parts, from the generic service to
+  its application across modules — and user-level advanced filter presets rolled out to seven groups
+  of modules.
+- Replaced SessionContext with PrincipalService across the whole codebase and removed obsolete
+  properties and entities.
 
 **Features built from the data model up**
 
-- Complete modules: Resource Analysis, Technical Profiles, Office Presence, Suppliers Contracts,
-  and contract/PO consumption tracking across projects.
-- Replaced default MS Project import/export behaviour with a purpose-built MPP/XML engine handling
-  actuals, rates, company calendars, resource absences and baselines.
-- Contractual baselines with multiple plan versions, earned value management with overheads, and
-  the Power BI reporting API behind allocation and portfolio dashboards.
+- Complete modules: Office Presence (defaults, exceptions, requests on behalf of others, columns and
+  advanced filters) and Technical Profiles (listing, creation, link to internal mobility).
+- Contractual baselines with multiple plan versions for the same baseline, baseline schedule
+  adjustment, version visualisation and contract revision import.
+- Earned value management with overheads: forecast cost calculation, cost-weighted progress,
+  automatic recalculation when the overhead type changes, and integration of the new EVM with
+  Power BI. The new Portfolios dashboard sits on top of it.
+- Financial flows: reading GL entries from NAV, automating the SO/PO request from the Billing Plan,
+  and improvements to Invoice Requests.
 
-**Since the promotion to Senior (2026)**
+#### Junior Engineer · September 2021 – July 2023
 
-- Own the technical design of features, not only their implementation — technical plan, backend and
-  Angular frontend end to end.
-- Introduced spec-driven development with LLM tooling to the product, building the team's spec kit.
-- Mentor junior developers through code review, onboarding support and best-practice guidance.
+The axis moved to the Jira integration — the piece connecting Pulsar's planning to the teams' real
+work — and to MS Project import/export.
+
+- Owned the Jira datasource: import of epics, features and structures, progress roll-up, sprints,
+  team allocation and synchronisation of reported effort.
+- Made that synchronisation survive production: semaphores against concurrent processing of the same
+  message, automatic retry after a sync failure, a full rewrite of the message-processing pipeline,
+  and monitoring of inbound messages.
+- Built MPP/XML import/export for Jira-integrated projects, including task and team validation, cost
+  rates and MS Project constraint handling.
+- Built the OpsGenie integration that pulls on-call periods into Operations tasks.
+- Created the service Docker image and integrated it into the CI pipeline.
+- Delivered Contract and Compensation Reviews, custom cost rate costing, the onboarding data model,
+  and portfolio performance work with new financial columns.
+
+#### Graduate Engineer · September 2020 – September 2021
+
+Entry through invoicing and resource management.
+
+- Built the Resource Analysis module almost end to end: filters, comments, bulk editing, bulk state
+  changes, Excel export, notifications, permissions and performance.
+- Delivered the Billing Plan and invoice request flows: sales lines, approval and rejection, lead
+  company and intra-company routing, notifications.
+- Built the Power BI reporting API and its paginated connector, and the indicators behind allocation
+  management — hiring needs, spare capacity, free and idle time, efficiency, and allocation by
+  project and by department.
+- Extended projects with sale rates, multi-currency rates, team-level resource planning, project
+  duplication and intervention hours.
+
+---
+
+**Across the six years**, three lines repeat in every role and say more than the module list does:
+**integrations** (Jira Server and Cloud, OpsGenie, ITSM, SAP Concur, NAV/Business Central, Dynamics
+CRM, Power BI, MS Project); **reliability of asynchronous processing** (semaphores, retries,
+deadlocks, message size, compression, health checks, monitoring); and **performance and technical
+debt** (query and endpoint optimisation, runtime upgrades, removal of obsolete code and tables,
+vulnerability remediation).
 
 ### Prado - Cartolinas da Lousã, S.A. — Internship · Lousã, Portugal
 

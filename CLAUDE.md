@@ -11,7 +11,7 @@ Contents:
 
 - `cv-completo.md` — the **master CV**: long-form, English (GB), the full record. Facts land here
   first.
-- `cv.md` — the one-page version, cut from the master to fit the Canva layout.
+- `cv.md` — the published version, cut from the master to fit the Canva layout.
 - `CV André 2026.pdf` — the current published CV, a single-page Canva export.
 - `cv-improvements.md` — running checklist of CV weaknesses to fix, with a fill-in section for
   facts only the user can supply. Written in Portuguese: it is a working note, not a CV artefact,
@@ -72,14 +72,17 @@ drops `I`, `L`, `/`, `@` and all punctuation. Reach for the raw operators (in th
 
 ## CV structure
 
-Two-column, single page. Left column: **Work Experience** (Software Engineer, Critical Software —
-September 2020 to present, bullet list). Right column: **Summary**, **Relevant Skills**,
-**Educational History**, **Affiliations**, **Awards**. Header carries the name, target title
-(Senior Software Engineer), LinkedIn (`linkedin.com/in/andbernardo`) and email
-(`andbernardo@outlook.com`).
+Two-column. Left column: **Work Experience** — the Critical Software entry is **unfolded by grade**
+(Senior Engineer, Professional Engineer, Junior Engineer, Graduate Engineer, newest first), each
+with its own dates and bullets, under a shared company header carrying the product and its scale.
+Right column: **Summary**, **Relevant Skills**, **Educational History**, **Affiliations**,
+**Awards**. Header carries the name, target title (Senior Software Engineer), LinkedIn
+(`linkedin.com/in/andbernardo`) and email (`andbernardo@outlook.com`).
 
-Keep bullets outcome-first and one line where possible; the layout is tight and a single-page CV
-is a hard constraint — any addition needs a corresponding cut.
+Keep bullets outcome-first and one line where possible. **The single page is no longer a hard
+constraint** — the user lifted it in August 2026 to make room for the grade progression, so the
+Canva design spans more than one page. Length still costs the reader, so an addition should displace
+something weaker rather than simply pile on.
 
 ## MCP servers
 
