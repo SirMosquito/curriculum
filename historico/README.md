@@ -31,7 +31,7 @@ Se alguma coisa for acrescentada aqui a partir de fontes internas, aplicar a mes
 
 ## Idioma
 
-Estes ficheiros são notas de trabalho, tal como o `cv-improvements.md` — ficam em Português. A regra
+Estes ficheiros são notas de trabalho — ficam em Português. A regra
 do Inglês (GB) aplica-se ao CV e a tudo o que sai para o exterior, incluindo o `factos-para-cv.md`,
 que já vai escrito em Inglês por ser texto destinado a ser colado no CV.
 

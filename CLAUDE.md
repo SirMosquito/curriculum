@@ -4,25 +4,56 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this repository is
 
-Not a software project. It holds André Bernardo's personal CV. There is no build, no test suite,
-no dependencies — the only artefacts are the CV document itself and `.mcp.json`.
+Not a software project. It holds André Bernardo's personal CV. There is no test suite. There is
+one build step (`npm run build`) with one dependency (`marked`), which turns `cv/cv.md` into
+the published outputs in `docs/`.
 
 Contents:
 
-- `cv-completo.md` — the **master CV**: long-form, English (GB), the full record. Facts land here
-  first.
-- `cv.md` — the published version, cut from the master to fit the Canva layout.
-- `CV André 2026.pdf` — the current published CV, a single-page Canva export.
-- `cv-improvements.md` — running checklist of CV weaknesses to fix, with a fill-in section for
-  facts only the user can supply. Written in Portuguese: it is a working note, not a CV artefact,
-  so the English (GB) rule does not apply.
+- `cv/cv-completo.md` — the **master CV**: long-form, English (GB), the full record. Facts land
+  here first.
+- `cv/cv.md` — the published version, cut from the master. This is what the build reads.
 - `historico/` — the personal archive the CV is cut from: career timeline, the six years at Critical
   Software reconstructed year by year, and the quantitative record from Jira. Portuguese working
   notes, except `historico/factos-para-cv.md`, which is English because it is text destined for the
   CV. See `historico/README.md`.
+- `docs/` — **generated, but committed on purpose**: `index.html` (the GitHub Pages site) and
+  `Andre-Bernardo-CV.pdf` (the file attached to applications). Never hand-edit; rebuild instead.
+- `build/` — `build.mjs` (the build script) and `template.html` (page skeleton and all CSS, screen
+  and print). `package.json` / `package-lock.json` pin the single dependency.
 
-The flow for content is: `historico/` (evidence) → `cv-completo.md` (master) → `cv.md` (one page) →
-Canva → PDF.
+The flow for content is: `historico/` (evidence) → `cv/cv-completo.md` (master) → `cv/cv.md`
+(published) → `npm run build` → `docs/` (`index.html` for GitHub Pages, `Andre-Bernardo-CV.pdf` for
+applications). The Canva design and its PDF export were retired in September 2026 in favour of
+this build.
+
+## Building the outputs
+
+```
+npm install      # once
+npm run build    # writes docs/index.html, docs/Andre-Bernardo-CV.pdf, docs/.nojekyll
+```
+
+- The script reads `cv/cv.md`, renders it with `marked` into `build/template.html`, then prints that
+  same HTML to PDF with Chrome headless (`--print-to-pdf`, A4, no header/footer). One source, so
+  the page and the PDF cannot drift.
+- Columns come from the `## ` headings: **Work Experience** goes left, every other section goes
+  right in source order. The header is the `# Name`, then the title paragraph, then the contact
+  line — keep that order at the top of `cv/cv.md`.
+- **The PDF is parser-first.** Applications go through applicant-tracking software before a
+  human, so the print stylesheet drops the two columns and lays the CV out as a single column in
+  `cv.md` order (Summary, Work Experience, Skills, Education, Affiliations & Awards), in Arial,
+  with plain bold headings (no uppercase transform, no letter-spacing), no icons, no tables, no
+  colour. Keep it that way: any print-CSS change must not reintroduce columns, text in images,
+  or decorative fonts. The two-column layout exists only on the web page.
+- Chrome is resolved from `CHROME_PATH`, then the usual install paths, then `google-chrome` /
+  `chromium`. Set `CHROME_PATH` if the build cannot find it.
+- **Any change to `cv/cv.md` must be followed by `npm run build`, and `docs/` committed with it.**
+  The PDF differs on every build (creation timestamp), so a `docs/` diff after a rebuild is
+  expected; `index.html` only changes with content or with the build date in the footer.
+- Live URLs once Pages is enabled (Settings → Pages → Deploy from a branch → `main`, `/docs`):
+  `https://sirmosquito.github.io/curriculum/` and
+  `https://sirmosquito.github.io/curriculum/Andre-Bernardo-CV.pdf`.
 
 ## Language rule
 
@@ -36,43 +67,9 @@ British conventions to apply:
 - `programme` (initiative) vs `program` (software)
 - Dates as `September 2020`; DD/MM/YYYY if numeric
 
-Fixed in `cv.md`, still wrong in the published PDF:
-
-- **The name renders as "André Bernado"** — the second `r` is missing. Confirmed at the operator
-  level: the 40pt heading draws 13 glyphs (`A n d r é _ B e r n a d o`), not 14. A real typo in the
-  Canva design, not an extraction artefact.
-- "organization" in the Lousã Volley Clube entry → "organisation"
-- PDF metadata declares `/Lang (pt-PT)` although the content is English — set the Canva document
-  language to English (UK) so exports carry `en-GB`
-
-## Source of truth: `cv.md` for content, Canva for layout
-
-The PDF is a **Canva export** (`/Producer (Canva)`, design keys in the PDF `/Keywords`:
-`DAHNC7Ed_vo`, `BAHNCxY6GCA`). Text is baked into a vector form XObject with subset fonts —
-the PDF is not editable here in any meaningful way.
-
-Consequence: never attempt to patch wording inside the PDF. The flow is: edit `cv.md` → hand the
-user the exact replacement text → they paste it into Canva → re-export over the PDF. So `cv.md` runs
-ahead of the PDF, and the two are expected to diverge until the next export.
-
-## Reading the PDF
-
-`pdftoppm` is not installed, so the Read tool cannot render pages. Use `pypdf`, which is installed:
-
-```python
-from pypdf import PdfReader
-print(PdfReader("CV André 2026.pdf").pages[0].extract_text())
-```
-
-Every glyph is positioned individually, so the output is space-separated per character
-(`A n d r é`) — collapse `"  "` to `" "` and `" "` to `""` to read it. Hand-rolling the decode
-is a trap: the subset fonts use 2-byte CIDs, so a per-byte pass over the `/ToUnicode` CMaps silently
-drops `I`, `L`, `/`, `@` and all punctuation. Reach for the raw operators (in the form XObject
-`/X10`, currently object 17) only to count glyphs and settle questions like the missing `r` above.
-
 ## CV structure
 
-Two-column. Left column: **Work Experience** — the Critical Software entry is **unfolded by grade**
+Two-column **on the web page** (the PDF is single-column, see above). Left column: **Work Experience** — the Critical Software entry is **unfolded by grade**
 (Senior Engineer, Professional Engineer, Junior Engineer, Graduate Engineer, newest first), each
 with its own dates and bullets, under a shared company header carrying the product and its scale.
 Right column: **Summary**, **Relevant Skills**, **Educational History**, **Affiliations**,
@@ -81,7 +78,7 @@ Right column: **Summary**, **Relevant Skills**, **Educational History**, **Affil
 
 Keep bullets outcome-first and one line where possible. **The single page is no longer a hard
 constraint** — the user lifted it in August 2026 to make room for the grade progression, so the
-Canva design spans more than one page. Length still costs the reader, so an addition should displace
+CV may span more than one page. Length still costs the reader, so an addition should displace
 something weaker rather than simply pile on.
 
 ## MCP servers
@@ -92,8 +89,9 @@ host). Both are inherited environment tooling, unrelated to the CV content.
 ## Version control
 
 Tracked in git since August 2026; remote `origin` is `github.com/SirMosquito/curriculum`
-(the user's personal GitHub account, not the work one). The local `user.email` is deliberately set
-to the personal address `andbernardo@outlook.com` so work email does not end up in a public history.
+(the user's personal GitHub account, not the work one). GitHub Pages serves `docs/` from `main`.
+The local `user.email` is deliberately set to the personal address `andbernardo@outlook.com` so
+work email does not end up in a public history.
 
 `.mcp.json` is **gitignored on purpose** — it points at the internal host
 `pulsar-build.critical.pt:9000`. Do not commit it, and do not quote internal hostnames in tracked

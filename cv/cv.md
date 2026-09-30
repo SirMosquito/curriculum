@@ -8,7 +8,7 @@ Senior Software Engineer
 
 Senior Software Engineer with six years on the same enterprise platform, promoted four times from
 Graduate to Senior. Backend specialist in Java and event-driven integrations, now working full-stack
-and owning technical design. 500+ features shipped on a multi-tenant ERP serving ~5,000 users across
+and owning technical design. 350+ features shipped on a multi-tenant ERP serving ~5,000 users across
 4 tenants and 680+ database tables, with a particular focus on making asynchronous integrations
 survive production.
 
@@ -26,7 +26,10 @@ planning, resourcing, HR, expenses, travel, procurement and financial reporting.
 
 - Own the technical design of features, not only their implementation — technical plan, Java backend
   and Angular frontend end to end.
-- Introduced spec-driven development with LLM tooling to the product, building the team's spec kit.
+- Introduced spec-driven development with LLM tooling to the product, building the team's spec kit
+  and multi-agent workflow, and training the team on it.
+- Automated intercompany purchase orders end to end — Business Central web services (AL query and
+  codeunit), the Java integration with validation, and sync errors surfaced in the Angular UI.
 - Built contract and PO consumption tracking across projects from the data model up, plus Suppliers
   Contracts renewals, procurement and travel approval workflows.
 - Built the ITSM synchronisation for prevention schedules, with error handling and project mapping.
@@ -85,6 +88,7 @@ September 2018 – June 2019
 - Kafka & event-driven architectures
 - Docker, CI/CD (Jenkins, GitHub Actions)
 - System integrations (Jira, OpsGenie, ITSM, SAP Concur, Business Central, CRM, Power BI, MS Project)
+- Business Central AL extensions (queries, codeunits, OData web services)
 - Spec-driven development with LLM tooling
 - Agile/Scrum, technical mentoring & code reviews
 

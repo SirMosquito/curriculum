@@ -3,15 +3,17 @@
 Banco de material já traduzido para linguagem de CV, em **Inglês (GB)**. Copiar daqui, não
 reescrever de raiz. Cada bloco tem a fonte ao lado, para não se perder de onde veio o número.
 
-O `cv-completo.md` (raiz do repositório) já usa boa parte disto. O que está aqui e não está lá é
+O `cv/cv-completo.md` já usa boa parte disto. O que está aqui e não está lá é
 material de reserva, para versões orientadas a vagas específicas.
 
 ## Números com prova
 
-> **500+ features shipped** — 372 backend/services sub-tasks plus 181 stories and tasks owned
-> end-to-end, across 918 assigned issues (847 resolved) over six years.
+> **350+ features shipped** — out of 540+ distinct issues with his commits across the platform's
+> repositories (about two-thirds features, one-third fixes), within 918 assigned issues (847
+> resolved) over six years.
 >
-> *Fonte: Jira, 25/08/2026. Ver `jira-numeros.md`.*
+> *Fonte: git, 30/09/2026, e Jira, 25/08/2026. Ver `jira-numeros.md`. O antigo "500+ features"
+> somava sub-tarefas e issues próprias com sobreposição e contava defeitos como features.*
 
 > **~150 issues delivered per year, sustained over six years**, on a platform of **680+ tables**
 > serving **~5,000 users across 4 tenants**.

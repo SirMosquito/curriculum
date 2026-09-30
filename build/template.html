@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{name}} — {{title}}</title>
+<meta name="description" content="CV of {{name}}, {{title}}.">
+<meta name="author" content="{{name}}">
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #1c1c1c;
+    --muted: #5c5c5c;
+    --rule: #d9d9d9;
+    --accent: #1f4e79;
+    --accent-soft: #e8eff6;
+    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+      "Noto Sans", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #141516;
+      --fg: #e6e6e6;
+      --muted: #a3a3a3;
+      --rule: #333537;
+      --accent: #8fb6dd;
+      --accent-soft: #1e2a36;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font);
+    font-size: 15px;
+    line-height: 1.45;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .page {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 32px 16px 48px;
+  }
+
+  /* Header ------------------------------------------------------------------------------- */
+  .header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 12px 24px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--accent);
+    margin-bottom: 24px;
+  }
+  .header h1 {
+    margin: 0;
+    font-size: 30px;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+  .header .title {
+    margin: 4px 0 0;
+    font-size: 17px;
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .header .contact {
+    margin: 6px 0 0;
+    color: var(--muted);
+  }
+  .download {
+    display: inline-block;
+    padding: 8px 14px;
+    border: 1px solid var(--accent);
+    border-radius: 6px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .download:hover { background: var(--accent-soft); text-decoration: none; }
+
+  /* Columns ------------------------------------------------------------------------------ */
+  /* Sections stay in document order in the DOM (Summary, Work Experience, …). On wide screens
+     Work Experience is pinned to the left column spanning every row, and the other sections
+     auto-place down the right column. Narrow screens and print fall back to document order. */
+  .columns {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    grid-template-rows: {{rows}};
+    gap: 0 40px;
+  }
+  .col-left { grid-column: 1; grid-row: 1 / -1; }
+  .col-right { grid-column: 2; }
+  @media (max-width: 720px) {
+    .columns { display: block; }
+    .header h1 { font-size: 26px; }
+  }
+
+  section { margin-bottom: 22px; }
+  h2 {
+    margin: 0 0 10px;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 4px;
+  }
+  h3 {
+    margin: 14px 0 0;
+    font-size: 16px;
+    line-height: 1.3;
+  }
+  h3:first-of-type { margin-top: 0; }
+  .dates {
+    margin: 2px 0 6px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  p { margin: 0 0 8px; }
+  ul {
+    margin: 0 0 8px;
+    padding-left: 18px;
+  }
+  li { margin: 0 0 4px; }
+  li::marker { color: var(--muted); }
+
+  .grade { margin-top: 10px; }
+  .grade-title { margin: 0 0 4px; }
+  .grade-title strong { font-weight: 600; }
+
+  .col-right h3 { font-size: 15px; }
+  .col-right ul { padding-left: 16px; }
+
+  footer {
+    margin-top: 32px;
+    padding-top: 12px;
+    border-top: 1px solid var(--rule);
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  /* Print / PDF -------------------------------------------------------------------------- */
+  /* The PDF is what gets uploaded to application portals, so it is built for parsers first:
+     a single column in document order, a standard font, plain bold headings with no uppercase
+     transform or letter-spacing, real text throughout, no colour that carries meaning. */
+  @page {
+    size: A4;
+    margin: 14mm 16mm;
+  }
+  @media print {
+    :root {
+      --bg: #ffffff;
+      --fg: #000000;
+      --muted: #333333;
+      --rule: #999999;
+      --accent: #000000;
+      --font: Arial, Helvetica, sans-serif;
+    }
+    html, body { background: #fff; color: var(--fg); }
+    body { font-size: 10pt; line-height: 1.3; }
+    .page { max-width: none; padding: 0; margin: 0; }
+    .download, footer { display: none; }
+    a { color: inherit; text-decoration: none; }
+    .header { display: block; margin-bottom: 10pt; padding-bottom: 6pt; border-bottom: 1px solid var(--rule); }
+    .header h1 { font-size: 18pt; letter-spacing: 0; }
+    .header .title { font-size: 11.5pt; font-weight: bold; color: var(--fg); margin-top: 2pt; }
+    .header .contact { font-size: 10pt; color: var(--fg); margin-top: 3pt; }
+    .columns { display: block; }
+    section { margin-bottom: 9pt; }
+    h2 {
+      font-size: 11.5pt;
+      font-weight: bold;
+      text-transform: none;
+      letter-spacing: 0;
+      color: var(--fg);
+      margin-bottom: 4pt;
+      padding-bottom: 2pt;
+      break-after: avoid;
+    }
+    h3 { font-size: 10.5pt; margin-top: 6pt; break-after: avoid; }
+    .col-right h3 { font-size: 10.5pt; }
+    .dates { font-size: 9.5pt; margin: 1pt 0 3pt; }
+    p { margin-bottom: 4pt; }
+    ul, .col-right ul { padding-left: 14pt; margin-bottom: 4pt; }
+    li { margin-bottom: 1.5pt; }
+    li::marker { color: var(--fg); }
+    .grade, h3 + .dates { break-inside: avoid; }
+    .grade { margin-top: 6pt; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="header">
+    <div>
+      <h1>{{name}}</h1>
+      <p class="title">{{title}}</p>
+      <p class="contact">{{contact}}</p>
+    </div>
+    <a class="download" href="{{pdf}}" download>Download PDF</a>
+  </header>
+
+  <main class="columns">
+{{sections}}
+  </main>
+
+  <footer>Last updated {{updated}}. Source on <a href="https://github.com/SirMosquito/curriculum">GitHub</a>.</footer>
+</div>
+</body>
+</html>

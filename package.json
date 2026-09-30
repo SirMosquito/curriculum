@@ -1,0 +1,12 @@
+{
+  "name": "curriculum",
+  "private": true,
+  "type": "module",
+  "description": "Builds docs/ (GitHub Pages site and PDF) from cv/cv.md",
+  "scripts": {
+    "build": "node build/build.mjs"
+  },
+  "dependencies": {
+    "marked": "^15.0.0"
+  }
+}

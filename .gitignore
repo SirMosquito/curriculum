@@ -4,3 +4,6 @@
 # Raw Jira extraction — internal issue titles carry client names and project codes.
 # Stays on the machine; the curated files in historico/ are the publishable version.
 historico/raw/
+
+# Build dependencies — docs/ is generated but committed on purpose (GitHub Pages serves it)
+node_modules/

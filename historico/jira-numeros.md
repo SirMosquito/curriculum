@@ -41,6 +41,11 @@ corresponde a ter feito a camada de serviços, o modelo de dados e as integraç�
 funcionalidade inteira. Somando com as 181 stories/tasks próprias, são **mais de 500
 funcionalidades** com backend seu.
 
+> **Corrigido a 30/09/2026 — o "500+ features" estava inflacionado.** A soma 372 + 181 conta duas
+> vezes (várias sub-tarefas por funcionalidade; stories próprias que também são pai de sub-tarefas)
+> e trata defeitos como features. Ver a secção *Verificação no código* abaixo: o número defensável
+> é **350+ features**.
+
 ## Issues-pai distintas por ano
 
 Contagem das funcionalidades em que entrou via sub-tarefa:
@@ -104,6 +109,32 @@ Os dados brutos estão em `raw/` (fora do git):
 
 - `raw/jira-issues-atribuidas.tsv` — as 410 issues não-sub-tarefa, com datas, tipo, componentes e estado
 - `raw/jira-subtasks-e-pais.tsv` — as 508 sub-tarefas com a issue-pai a que pertencem
+
+## Verificação no código (git, 30/09/2026)
+
+Contagem de chaves Jira distintas nas mensagens dos commits do próprio (sem merges), em todos os
+repositórios da plataforma:
+
+| Métrica | Valor |
+|---|---|
+| Commits próprios no repositório de serviços | ~6 000 (todas as refs) |
+| Issues distintas com commits seus — serviços | 498 |
+| Issues distintas com commits seus — todos os repositórios | **546** |
+| Primeira / última | Out 2020 / Set 2026 |
+
+Issues distintas por ano (serviços): 2020 14 · 2021 75 · 2022 72 · 2023 116 · 2024 79 · 2025 88 ·
+2026 58 (até Setembro).
+
+**Features vs correcções.** Das issues com prefixo de branch identificável (227), 152 vêm de
+`feature/` e 75 de `bugfix/` — dois terços features. Bate com o Jira: 229 dos 410 issues próprios
+são defeitos, mas as sub-tarefas de backend são quase todas funcionalidade. Aplicado às 546:
+**~360 features, ~180 correcções**. No CV: **350+ features shipped** (arredondado para baixo).
+
+Para refazer:
+
+```
+git log --all --no-merges --author=agbernardo --author=andre.bernardo --format=%s   | grep -oE '(PULSAR|CAP)-[0-9]+' | sort -u | wc -l
+```
 
 ## O que ainda falta medir
 

@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>André Bernardo — Senior Software Engineer</title>
+<meta name="description" content="CV of André Bernardo, Senior Software Engineer.">
+<meta name="author" content="André Bernardo">
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #1c1c1c;
+    --muted: #5c5c5c;
+    --rule: #d9d9d9;
+    --accent: #1f4e79;
+    --accent-soft: #e8eff6;
+    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+      "Noto Sans", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #141516;
+      --fg: #e6e6e6;
+      --muted: #a3a3a3;
+      --rule: #333537;
+      --accent: #8fb6dd;
+      --accent-soft: #1e2a36;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font);
+    font-size: 15px;
+    line-height: 1.45;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .page {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 32px 16px 48px;
+  }
+
+  /* Header ------------------------------------------------------------------------------- */
+  .header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 12px 24px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--accent);
+    margin-bottom: 24px;
+  }
+  .header h1 {
+    margin: 0;
+    font-size: 30px;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+  .header .title {
+    margin: 4px 0 0;
+    font-size: 17px;
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .header .contact {
+    margin: 6px 0 0;
+    color: var(--muted);
+  }
+  .download {
+    display: inline-block;
+    padding: 8px 14px;
+    border: 1px solid var(--accent);
+    border-radius: 6px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .download:hover { background: var(--accent-soft); text-decoration: none; }
+
+  /* Columns ------------------------------------------------------------------------------ */
+  /* Sections stay in document order in the DOM (Summary, Work Experience, …). On wide screens
+     Work Experience is pinned to the left column spanning every row, and the other sections
+     auto-place down the right column. Narrow screens and print fall back to document order. */
+  .columns {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    grid-template-rows: repeat(4, auto) 1fr;
+    gap: 0 40px;
+  }
+  .col-left { grid-column: 1; grid-row: 1 / -1; }
+  .col-right { grid-column: 2; }
+  @media (max-width: 720px) {
+    .columns { display: block; }
+    .header h1 { font-size: 26px; }
+  }
+
+  section { margin-bottom: 22px; }
+  h2 {
+    margin: 0 0 10px;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 4px;
+  }
+  h3 {
+    margin: 14px 0 0;
+    font-size: 16px;
+    line-height: 1.3;
+  }
+  h3:first-of-type { margin-top: 0; }
+  .dates {
+    margin: 2px 0 6px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  p { margin: 0 0 8px; }
+  ul {
+    margin: 0 0 8px;
+    padding-left: 18px;
+  }
+  li { margin: 0 0 4px; }
+  li::marker { color: var(--muted); }
+
+  .grade { margin-top: 10px; }
+  .grade-title { margin: 0 0 4px; }
+  .grade-title strong { font-weight: 600; }
+
+  .col-right h3 { font-size: 15px; }
+  .col-right ul { padding-left: 16px; }
+
+  footer {
+    margin-top: 32px;
+    padding-top: 12px;
+    border-top: 1px solid var(--rule);
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  /* Print / PDF -------------------------------------------------------------------------- */
+  /* The PDF is what gets uploaded to application portals, so it is built for parsers first:
+     a single column in document order, a standard font, plain bold headings with no uppercase
+     transform or letter-spacing, real text throughout, no colour that carries meaning. */
+  @page {
+    size: A4;
+    margin: 14mm 16mm;
+  }
+  @media print {
+    :root {
+      --bg: #ffffff;
+      --fg: #000000;
+      --muted: #333333;
+      --rule: #999999;
+      --accent: #000000;
+      --font: Arial, Helvetica, sans-serif;
+    }
+    html, body { background: #fff; color: var(--fg); }
+    body { font-size: 10pt; line-height: 1.3; }
+    .page { max-width: none; padding: 0; margin: 0; }
+    .download, footer { display: none; }
+    a { color: inherit; text-decoration: none; }
+    .header { display: block; margin-bottom: 10pt; padding-bottom: 6pt; border-bottom: 1px solid var(--rule); }
+    .header h1 { font-size: 18pt; letter-spacing: 0; }
+    .header .title { font-size: 11.5pt; font-weight: bold; color: var(--fg); margin-top: 2pt; }
+    .header .contact { font-size: 10pt; color: var(--fg); margin-top: 3pt; }
+    .columns { display: block; }
+    section { margin-bottom: 9pt; }
+    h2 {
+      font-size: 11.5pt;
+      font-weight: bold;
+      text-transform: none;
+      letter-spacing: 0;
+      color: var(--fg);
+      margin-bottom: 4pt;
+      padding-bottom: 2pt;
+      break-after: avoid;
+    }
+    h3 { font-size: 10.5pt; margin-top: 6pt; break-after: avoid; }
+    .col-right h3 { font-size: 10.5pt; }
+    .dates { font-size: 9.5pt; margin: 1pt 0 3pt; }
+    p { margin-bottom: 4pt; }
+    ul, .col-right ul { padding-left: 14pt; margin-bottom: 4pt; }
+    li { margin-bottom: 1.5pt; }
+    li::marker { color: var(--fg); }
+    .grade, h3 + .dates { break-inside: avoid; }
+    .grade { margin-top: 6pt; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="header">
+    <div>
+      <h1>André Bernardo</h1>
+      <p class="title">Senior Software Engineer</p>
+      <p class="contact"><a href="https://linkedin.com/in/andbernardo">linkedin.com/in/andbernardo</a> · <a href="mailto:andbernardo@outlook.com">andbernardo@outlook.com</a></p>
+    </div>
+    <a class="download" href="Andre-Bernardo-CV.pdf" download>Download PDF</a>
+  </header>
+
+  <main class="columns">
+<section id="summary" class="col-right" aria-labelledby="summary-heading">
+<h2 id="summary-heading">Summary</h2>
+<p>Senior Software Engineer with six years on the same enterprise platform, promoted four times from
+Graduate to Senior. Backend specialist in Java and event-driven integrations, now working full-stack
+and owning technical design. 350+ features shipped on a multi-tenant ERP serving ~5,000 users across
+4 tenants and 680+ database tables, with a particular focus on making asynchronous integrations
+survive production.</p>
+</section>
+<section id="work-experience" class="col-left" aria-labelledby="work-experience-heading">
+<h2 id="work-experience-heading">Work Experience</h2>
+<h3>Critical Software — Coimbra</h3>
+<p class="dates">September 2020 – Present</p>
+<p>Six years on Pulsar, an ERP-style web platform running the company&#39;s own operations — projects,
+planning, resourcing, HR, expenses, travel, procurement and financial reporting. Four tenants,
+~5,000 users, 680+ tables.</p>
+<div class="grade">
+<p class="grade-title"><strong>Senior Engineer</strong> · January 2026 – Present</p>
+<ul>
+<li>Own the technical design of features, not only their implementation — technical plan, Java backend
+and Angular frontend end to end.</li>
+<li>Introduced spec-driven development with LLM tooling to the product, building the team&#39;s spec kit
+and multi-agent workflow, and training the team on it.</li>
+<li>Automated intercompany purchase orders end to end — Business Central web services (AL query and
+codeunit), the Java integration with validation, and sync errors surfaced in the Angular UI.</li>
+<li>Built contract and PO consumption tracking across projects from the data model up, plus Suppliers
+Contracts renewals, procurement and travel approval workflows.</li>
+<li>Built the ITSM synchronisation for prevention schedules, with error handling and project mapping.</li>
+<li>Mentor junior developers through code review, onboarding support and best-practice guidance.</li>
+</ul>
+</div>
+<div class="grade">
+<p class="grade-title"><strong>Professional Engineer</strong> · July 2023 – January 2026</p>
+<ul>
+<li>Led the Jira Server → Cloud migration: impact assessment followed by a four-part rebuild that
+abstracted the HTTP layer and introduced parallel processing flows for both platforms.</li>
+<li>Migrated the finance integration from Dynamics NAV to Business Central — moved to OData services
+and replaced NTLM with OAuth authentication.</li>
+<li>Built the SAP Concur travel integration from scratch: the datasource itself, then full user, task
+and approver synchronisation, including backup approvers and role correction.</li>
+<li>Optimised the project plan read and write endpoints — the hottest path in the product — and fixed
+production deadlocks in the baseline and event-log tables.</li>
+<li>Ran platform-wide upgrades — Java 21, Wildfly 32, Quarkus, Kafka — including remediation of known
+vulnerabilities in the datasource services.</li>
+<li>Built the asynchronous file and Excel download service and the user-level advanced filter presets
+rolled out to every module.</li>
+<li>Delivered Office Presence and Technical Profiles as new modules, contractual baselines with
+multiple plan versions, and a purpose-built MPP/XML engine replacing default MS Project
+import/export.</li>
+</ul>
+</div>
+<div class="grade">
+<p class="grade-title"><strong>Junior Engineer</strong> · September 2021 – July 2023</p>
+<ul>
+<li>Owned the Jira integration: import of epics, features and structures, progress roll-up, sprints,
+team allocation and synchronisation of reported effort.</li>
+<li>Made that synchronisation survive production — semaphores against concurrent processing of the
+same message, automatic retry after a sync failure, and a full rewrite of the message-processing
+pipeline.</li>
+<li>Built the OpsGenie integration that pulls on-call schedules into project operations, and MPP/XML
+import/export for Jira-integrated projects.</li>
+<li>Created the service Docker image and integrated it into the CI pipeline.</li>
+</ul>
+</div>
+<div class="grade">
+<p class="grade-title"><strong>Graduate Engineer</strong> · September 2020 – September 2021</p>
+<ul>
+<li>Built the Resource Analysis module almost end to end: filters, comments, bulk editing and state
+changes, Excel export, notifications and permissions.</li>
+<li>Delivered the Billing Plan and invoice request flows — sales lines, approvals, and lead company
+and intra-company routing.</li>
+<li>Built the Power BI reporting API and its paginated connector, and the indicators behind allocation
+management: hiring needs, spare capacity, idle time and efficiency.</li>
+</ul>
+</div>
+<h3>Prado - Cartolinas da Lousã — Internship</h3>
+<p class="dates">September 2018 – June 2019</p>
+<ul>
+<li>Built an internal task-management webapp (PHP, MySQL, JavaScript) — first hands-on software
+project, ahead of formal training.</li>
+</ul>
+</section>
+<section id="relevant-skills" class="col-right" aria-labelledby="relevant-skills-heading">
+<h2 id="relevant-skills-heading">Relevant Skills</h2>
+<ul>
+<li>Java (Jakarta EE, Quarkus, Wildfly), Java 21</li>
+<li>Angular, REST and OData APIs, microservices</li>
+<li>SQL Server, Hibernate/JPA, relational database design, query optimisation</li>
+<li>Kafka &amp; event-driven architectures</li>
+<li>Docker, CI/CD (Jenkins, GitHub Actions)</li>
+<li>System integrations (Jira, OpsGenie, ITSM, SAP Concur, Business Central, CRM, Power BI, MS Project)</li>
+<li>Business Central AL extensions (queries, codeunits, OData web services)</li>
+<li>Spec-driven development with LLM tooling</li>
+<li>Agile/Scrum, technical mentoring &amp; code reviews</li>
+</ul>
+</section>
+<section id="educational-history" class="col-right" aria-labelledby="educational-history-heading">
+<h2 id="educational-history-heading">Educational History</h2>
+<h3>Java Programming Course — University of Coimbra</h3>
+<p class="dates">2019 – 2020</p>
+<h3>Master&#39;s in Mechanical Engineering — University of Coimbra</h3>
+<p class="dates">2012 – 2017</p>
+</section>
+<section id="affiliations-and-awards" class="col-right" aria-labelledby="affiliations-and-awards-heading">
+<h2 id="affiliations-and-awards-heading">Affiliations & Awards</h2>
+<h3>Lousã Volley Clube — Non-profit</h3>
+<p>Supported the organisation of an annual volleyball tournament, Summer Cup — 200 teams,
+3,000+ participants.</p>
+<h3>Engineering Ingenuity Award 2025 — Critical Software</h3>
+<p>For technical and engineering excellence.</p>
+<h3>Java Programming Course 2020 — University of Coimbra</h3>
+<p>Top of class distinction for highest academic performance.</p>
+</section>
+
+  </main>
+
+  <footer>Last updated 30 September 2026. Source on <a href="https://github.com/SirMosquito/curriculum">GitHub</a>.</footer>
+</div>
+</body>
+</html>

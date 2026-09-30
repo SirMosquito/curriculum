@@ -6,15 +6,15 @@ Senior Software Engineer · Coimbra, Portugal
 
 Portuguese (native) · English (fluent)
 
-> **This is the master CV — the long-form record.** `cv.md` is the version cut from it for the Canva
-> layout. Edit facts here first, then decide what survives the cut. See `historico/` for the
+> **This is the master CV — the long-form record.** `cv.md` is the version cut from it for
+> publication. Edit facts here first, then decide what survives the cut. See `historico/` for the
 > underlying evidence.
 
 ## Summary
 
 Senior Software Engineer with six years on the same enterprise platform, promoted four times from
 Graduate to Senior. Backend specialist in Java and event-driven integrations, now working full-stack
-and owning technical design. Track record: 500+ features shipped on a multi-tenant ERP serving
+and owning technical design. Track record: 350+ features shipped on a multi-tenant ERP serving
 ~5,000 users across 4 tenants and 680+ database tables, with a particular focus on making
 asynchronous integrations survive production.
 
@@ -27,9 +27,9 @@ planning, resourcing, HR, expenses, travel, procurement, invoicing and financial
 Four tenants, ~5,000 users, 680+ tables. Java services with a dedicated datasource per external
 system, connected over Kafka.
 
-918 issues assigned and 847 resolved across the six years — roughly 150 per year, sustained. Of
-those, 372 backend sub-tasks (the service layer, data model and integrations of a whole feature)
-plus 181 stories and tasks owned end to end: **500+ features shipped**.
+918 issues assigned and 847 resolved across the six years — roughly 150 per year, sustained. The
+code confirms it: 540+ distinct issues carry commits of his across the platform's repositories,
+about two-thirds of them features and one-third fixes — **350+ features shipped**.
 
 ---
 
@@ -40,7 +40,16 @@ responsibility of its own, the profile went full-stack, and LLM tooling entered 
 
 - Own the technical design of features, not only their implementation — technical plan, Java backend
   and Angular frontend end to end.
-- Introduced spec-driven development with LLM tooling to the product, building the team's spec kit.
+- Introduced spec-driven development with LLM tooling to the product: built the team's spec kit,
+  then a multi-agent workflow that takes each issue through refinement, task breakdown,
+  implementation and review, backed by a shared knowledge base of decisions and coding guidelines.
+- Wrote and delivered the team's training track on AI tooling and on the platform's engineering —
+  architecture, Jakarta EE beans and transactions, investigating a production problem.
+- Automated intercompany purchase orders end to end: Business Central web services in AL (a query
+  exposing the orders with Pulsar correlation ids, a codeunit creating them and sending them to the
+  partner company), the Java datasource that validates vendor and G/L mappings before calling
+  Business Central, email support on sync failures, and the errors surfaced in the Angular UI.
+- Extended financial plans to multi-project views with a paginated API.
 - Built contract and PO consumption tracking across projects from the data model up — five parts,
   from the information itself through consumption, editing and detail, comments, and the link to
   credit notes.
@@ -176,6 +185,8 @@ microservices, OAuth2, Keycloak
 
 **Integrations** — Jira (Server & Cloud), OpsGenie, ITSM, SAP Concur, Dynamics NAV, Business
 Central, Dynamics CRM, Power BI, MS Project
+
+**Business Central** — AL extensions: queries, codeunits, OData and SOAP web services
 
 **Ways of working** — spec-driven development with LLM tooling, Agile/Scrum, code review, technical
 mentoring, technical debt reduction
